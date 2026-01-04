@@ -1,0 +1,1 @@
+# deprem-bilgi-uyari-portali
