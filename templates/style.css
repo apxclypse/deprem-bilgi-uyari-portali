@@ -1,0 +1,135 @@
+body {
+    background: linear-gradient(135deg, #1e1e2f, #2a2a40);
+    color: #f5f5f5;
+}
+
+.list {
+    background: #ffffff;
+    color: #222;
+}
+
+h1 {
+    color: #ffffff;
+}
+
+p {
+    color: #dddddd;
+}
+
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f4f6f8;
+    color: #222;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+    font-weight: 700;
+}
+
+p {
+    text-align: center;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.container {
+    display: flex;
+    gap: 15px;
+    padding: 15px;
+}
+
+/* SOL PANEL */
+.list {
+    width: 35%;
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.list h2 {
+    margin-top: 0;
+    font-weight: 700;
+}
+
+/* SEKME BUTONLARI */
+.tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 700;
+    cursor: pointer;
+    background: #e0e0e0;
+}
+
+.tab-btn.active {
+    background: #1976d2;
+    color: white;
+}
+
+/* DEPREM LİSTESİ */
+#earthquakeList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+#earthquakeList li {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
+
+#earthquakeList li:hover {
+    background: #f0f0f0;
+}
+
+/* MAGNİTÜD */
+.mag {
+    display: inline-block;
+    width: 35px;
+    text-align: center;
+    border-radius: 6px;
+    background: #ffeb3b;
+    font-weight: 700;
+    margin-right: 8px;
+}
+
+.mag.big {
+    background: #d32f2f;
+    color: white;
+}
+
+/* HARİTA */
+#map {
+    flex: 1;
+    height: 600px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* MOBİL */
+@media (max-width: 900px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .list {
+        width: 100%;
+    }
+
+    #map {
+        height: 400px;
+    }
+}

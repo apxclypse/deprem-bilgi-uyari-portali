@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Deprem Bilgi ve Uyarı Portalı</title>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+    <!-- Özel CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <!-- UYARI POPUP -->
+    <div id="alertPopup" class="popup">
+        <div class="popup-content">
+            <h2>⚠️ BÜYÜK DEPREM UYARISI</h2>
+            <p id="alertText"></p>
+            <button onclick="closePopup()">Kapat</button>
+            <audio id="alertSound">
+                <source src="{{ url_for('static', filename='alarm.mp3') }}" type="audio/mpeg">
+            </audio>
+        </div>
+    </div>
+
+    <h1>🌍 Deprem Bilgi ve Uyarı Portalı</h1>
+    <p>Son depremler harita üzerinde gösterilmektedir.</p>
+
+    <div class="container">
+        <div class="list">
+            <h2>Son Depremler</h2>
+
+            <div class="tabs">
+                <button class="tab-btn active" onclick="showTurkey()">🇹🇷 Türkiye Depremleri</button>
+                <button class="tab-btn" onclick="showGlobal()">🌍 Küresel Deprem Kayıtları</button>
+            </div>
+
+            <ul id="earthquakeList"></ul>
+
+            <ul>
+                {% for eq in earthquakes %}
+                <li class="{% if eq.mag >= 5 %}big{% endif %}">
+                    {{ eq.date }} – {{ eq.title }} – <strong>{{ eq.mag }}</strong>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div id="map"></div>
+    </div>
+
+    <!-- Flask’dan JS’ye veri geçişi -->
+    <script>
+        const earthquakes = {{ earthquakes | tojson }};
+    </script>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <!-- Özel JS -->
+    <script src="{{ url_for('static', filename='map.js') }}"></script>
+
+</body>
+</html>
